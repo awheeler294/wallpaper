@@ -83,6 +83,13 @@ if __name__=='__main__':
                         default=HOME+'/Pictures/wallpapers',
                         help='Base path to find random paths in')
 
+    parser.add_argument('--get-wallpaper-path', action='store_true', required=False,
+                        default=False, dest='get_wallpaper_path',
+                        help='Return a random wallpaper path')
+
     args = parser.parse_args()
 
-    set_wallpapers(args.base_path)
+    if args.get_wallpaper_path:
+        print(get_paths(1, args.base_path))
+    else:
+        set_wallpapers(args.base_path)
